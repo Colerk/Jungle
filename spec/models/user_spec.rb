@@ -25,11 +25,32 @@ RSpec.describe User, type: :model do
     end
 
     it 'should confirm user passwords have a minimum length' do
-      @user = User.new(name: 'cole', last_name: 'k', email: 'cole.k@test.com', password: 't', password_confirmation: 't')
+      @user = User.new(name: 'cole', last_name: 'k', email: 'pizza.k@test.com', password: 't', password_confirmation: 't')
       @user.save
       expect(@user.errors.full_messages[0]).to eq "Password is too short (minimum is 4 characters)"
     end
 
+  end
+
+end
+
+RSpec.describe User, type: :model do
+
+  describe 'Validations' do
+    it "Should pass if email has white space on login" do
+      @user = User.new(name: 'cole', last_name: 'k', email: 'cole.k@test.com', password: 'test', password_confirmation: 'test')
+      @user.save
+      expect(@user.authenticate_with_credentials('   cole.k@test.com', 'test').email).to eq 'cole.k@test.com'
+    end
+    # expect(login_as @user).to 
+  end
+
+  describe '.authenticate_with_credentials' do
+    it 'should pass if email case is not matching' do
+      @user = User.new(name: 'cole', last_name: 'k', email: 'cole.k@test.com', password: 'test', password_confirmation: 'test')
+      @user.save
+      expect(@user.authenticate_with_credentials('Cole.k@test.com', 'test').email).to eq 'cole.k@test.com'
+    end
   end
 
 end

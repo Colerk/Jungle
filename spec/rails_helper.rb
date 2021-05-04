@@ -1,6 +1,21 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+require 'devise'
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
+
+module AuthHelper
+  def login_user
+   @request.env["devise.mapping"] = Devise.mappings[:user]
+   user = FactoryGirl.create(:user)
+   # user.confirm # or set a confirmed_at inside the factory. Only      necessary if you are using the "confirmable" module
+   sign_in user
+  end
+ end
+
+ RSpec.configure do |config|
+  config.include Devise::TestHelpers, :type => :controller
+end
 
 require File.expand_path('../config/environment', __dir__)
 
