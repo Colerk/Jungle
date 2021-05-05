@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Clicking products navigates to product page", type: :feature, js: true do
+RSpec.feature "Add to Cart", type: :feature, js: true do
 
   # SETUP
   before :each do
@@ -17,15 +17,14 @@ RSpec.feature "Clicking products navigates to product page", type: :feature, js:
     end
   end
 
-  scenario "Can navigate to product:ID on click" do
+  scenario "Clicking Add to Cart increases Cart size" do
     # ACT
     visit root_path
 
-    # DEBUG / VERIFY
-    click_link('Details', match: :first)
+    # # DEBUG / VERIFY
+    click_on('Add', match: :first)
     sleep 1
-    # save_screenshot
-    expect(page).to have_text 'Description'
+    expect(page).to have_text 'My Cart (1)'
   end
 
 end
