@@ -24,7 +24,6 @@ RSpec.feature "Clicking products navigates to product page", type: :feature, js:
     # DEBUG / VERIFY
     click_link('Details', match: :first)
     sleep 1
-    # save_screenshot
     expect(page).to have_text 'Description'
   end
 
