@@ -4,11 +4,11 @@ A mini e-commerce application built with Rails 4.2 for purposes of learning Rail
 
 Testing completed with RSpec and Capybara. 
 
-![Create]()
+![Index](https://raw.githubusercontent.com/Colerk/Jungle/master/app/assets/images/Index.png)
 
-![Create]()
+![Product ID](https://raw.githubusercontent.com/Colerk/Jungle/master/app/assets/images/Product%20%3Aid.png)
 
-![Create]()
+![Admin](https://raw.githubusercontent.com/Colerk/Jungle/master/app/assets/images/Admin%3A%20Products.png)
 
 ## Setup
 
